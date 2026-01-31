@@ -3,101 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Virtual | MULTISERVICIOS FERNANDEZ</title>
+    <title>Tienda Oficial | MULTISERVICIOS FERNANDEZ</title>
     <style>
-        :root { --primary: #004085; --secondary: #28a745; --light: #f8f9fa; }
-        body { font-family: 'Arial', sans-serif; margin: 0; color: #333; background: #f4f4f4; }
-        header { background: var(--primary); color: white; padding: 20px; text-align: center; }
-        nav { background: #fff; padding: 10px; text-align: center; border-bottom: 1px solid #ddd; sticky: top; }
-        nav a { margin: 0 15px; text-decoration: none; color: var(--primary); font-weight: bold; }
-        .container { max-width: 1100px; margin: auto; padding: 20px; }
+        :root { --azul: #004085; --verde: #28a745; --blanco: #ffffff; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f8f9fa; }
+        header { background: var(--azul); color: white; padding: 20px; text-align: center; border-bottom: 4px solid var(--verde); }
+        .container { max-width: 1200px; margin: auto; padding: 20px; display: flex; flex-wrap: wrap; gap: 20px; }
         
-        /* Grilla de Productos */
-        .catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .product-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
-        .price { color: var(--secondary); font-size: 1.2rem; font-weight: bold; display: block; margin: 10px 0; }
-        .btn-buy { background: var(--secondary); color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 100%; }
+        /* Catálogo */
+        .productos { flex: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .card { background: white; border: 1px solid #ddd; padding: 15px; border-radius: 8px; text-align: center; }
+        .card h3 { font-size: 1.1rem; color: var(--azul); }
+        .precio { font-size: 1.3rem; color: var(--verde); font-weight: bold; margin: 10px 0; display: block; }
+        .btn-add { background: var(--azul); color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; }
 
-        /* Sección Legal para Izipay */
-        .legal { font-size: 0.8rem; color: #777; margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
-        footer { background: #222; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+        /* Carrito de Compras (Vital para Izipay) */
+        .carrito-seccion { flex: 1; background: white; padding: 20px; border-radius: 8px; border: 2px solid var(--azul); min-width: 300px; height: fit-content; }
+        .carrito-item { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 5px 0; font-size: 0.9rem; }
+        .total { font-size: 1.5rem; font-weight: bold; color: var(--azul); margin-top: 15px; display: block; text-align: right; }
+        .btn-pagar { background: var(--verde); color: white; border: none; padding: 15px; border-radius: 5px; width: 100%; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 10px; }
+
+        .legal-info { width: 100%; background: #e9ecef; padding: 20px; border-radius: 8px; margin-top: 30px; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>MULTISERVICIOS FERNANDEZ</h1>
-    <p>Librería, Papelería y Servicios Digitales</p>
+    <p>RUC: 10754369260 | Tienda Virtual Autorizada</p>
 </header>
 
-<nav>
-    <a href="#productos">Productos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#contacto">Contacto</a>
-</nav>
-
 <div class="container">
-    <section id="productos">
-        <h2 style="text-align:center;">Catálogo de Productos</h2>
-        <div class="catalog">
-            <div class="product-card">
-                <h3>Papel Bond A4 (Paquete)</h3>
-                <p>Marca Report/Atlas - 75gr</p>
-                <span class="price">S/ 14.50</span>
-                <button class="btn-buy">Añadir al carrito</button>
-            </div>
-            <div class="product-card">
-                <h3>Cuadernos Standford</h3>
-                <p>Cuadriculado / Rayado 100 hojas</p>
-                <span class="price">S/ 5.50</span>
-                <button class="btn-buy">Añadir al carrito</button>
-            </div>
-            <div class="product-card">
-                <h3>Pack Lapiceros Faber-Castell</h3>
-                <p>Caja x 10 unidades (Azul/Negro)</p>
-                <span class="price">S/ 12.00</span>
-                <button class="btn-buy">Añadir al carrito</button>
-            </div>
-            <div class="product-card">
-                <h3>Archivadores de Palanca</h3>
-                <p>Tamaño Oficio - Colores variados</p>
-                <span class="price">S/ 8.50</span>
-                <button class="btn-buy">Añadir al carrito</button>
-            </div>
+    <div class="productos">
+        <div class="card">
+            <h3>Papel Bond A4 75gr</h3>
+            <span class="precio">S/ 14.80</span>
+            <button class="btn-add" onclick="agregarAlCarrito('Papel Bond A4', 14.80)">Agregar al Carrito</button>
         </div>
-    </section>
-
-    <section id="servicios" style="margin-top:50px;">
-        <h2 style="text-align:center;">Servicios Digitales</h2>
-        <div class="catalog">
-            <div class="product-card">
-                <h3>Impresiones B/N</h3>
-                <span class="price">S/ 0.20 (por hoja)</span>
-            </div>
-            <div class="product-card">
-                <h3>Impresiones a Color</h3>
-                <span class="price">S/ 1.00 (desde)</span>
-            </div>
-            <div class="product-card">
-                <h3>Anillados y Enmicados</h3>
-                <span class="price">S/ 3.50 (desde)</span>
-            </div>
+        <div class="card">
+            <h3>Cuaderno Standford</h3>
+            <span class="precio">S/ 5.90</span>
+            <button class="btn-add" onclick="agregarAlCarrito('Cuaderno Standford', 5.90)">Agregar al Carrito</button>
         </div>
-    </section>
+        <div class="card">
+            <h3>Caja Lapiceros x12</h3>
+            <span class="precio">S/ 11.50</span>
+            <button class="btn-add" onclick="agregarAlCarrito('Caja Lapiceros', 11.50)">Agregar al Carrito</button>
+        </div>
+        <div class="card">
+            <h3>Folder Manila A4 x10</h3>
+            <span class="precio">S/ 4.50</span>
+            <button class="btn-add" onclick="agregarAlCarrito('Folder Manila', 4.50)">Agregar al Carrito</button>
+        </div>
+    </div>
 
-    <section id="contacto" class="legal">
-        <h3>Información de Contacto y Políticas</h3>
-        <p><strong>Ubicación:</strong> Villa María del Triunfo, Lima, Perú.</p>
-        <p><strong>RUC:</strong> 10754369260</p>
-        <p><strong>Políticas de Devolución:</strong> Se aceptan cambios por defectos de fábrica dentro de las 48 horas con comprobante de pago.</p>
-        <p><strong>Envío:</strong> Entregas locales en V.M.T. y recojo en tienda física.</p>
+    <div class="carrito-seccion">
+        <h2 style="margin-top:0; color: var(--azul);">Tu Pedido</h2>
+        <div id="lista-carrito">
+            <p style="color:#777;">El carrito está vacío.</p>
+        </div>
+        <hr>
+        <span class="total">Total: S/ <span id="monto-total">0.00</span></span>
+        <button class="btn-pagar" onclick="simularPago()">PAGAR CON IZIPAY</button>
+        <p style="font-size: 0.7rem; color: #777; text-align: center; margin-top: 10px;">Aceptamos Visa, Mastercard, AMEX y Diners.</p>
+    </div>
+
+    <section class="legal-info">
+        <h3 style="margin-top:0;">Políticas de la Tienda</h3>
+        <p><strong>Razón Social:</strong> MULTISERVICIOS FERNANDEZ</p>
+        <p><strong>Dirección:</strong> Villa María del Triunfo, Lima, Perú.</p>
+        <p><strong>Términos y Condiciones:</strong> Los precios incluyen IGV. La entrega de productos se realiza previa validación del pago mediante nuestra pasarela autorizada Izipay.</p>
+        <p><strong>Protección de Datos:</strong> Sus datos están protegidos bajo la Ley N° 29733 de Protección de Datos Personales en Perú.</p>
     </section>
 </div>
 
-<footer>
-    <p>&copy; 2026 MULTISERVICIOS FERNANDEZ - Todos los derechos reservados.</p>
-</footer>
+<script>
+    let carrito = [];
+    let total = 0;
+
+    function agregarAlCarrito(nombre, precio) {
+        carrito.push({nombre, precio});
+        actualizarInterfaz();
+    }
+
+    function actualizarInterfaz() {
+        const lista = document.getElementById('lista-carrito');
+        const montoTotal = document.getElementById('monto-total');
+        
+        if (carrito.length === 0) {
+            lista.innerHTML = '<p>El carrito está vacío.</p>';
+            total = 0;
+        } else {
+            lista.innerHTML = '';
+            total = 0;
+            carrito.forEach((item) => {
+                const div = document.createElement('div');
+                div.className = 'carrito-item';
+                div.innerHTML = `<span>${item.nombre}</span> <span>S/ ${item.precio.toFixed(2)}</span>`;
+                lista.appendChild(div);
+                total += item.precio;
+            });
+        }
+        montoTotal.innerText = total.toFixed(2);
+    }
+
+    function simularPago() {
+        if (total === 0) {
+            alert("Por favor, agrega productos al carrito antes de pagar.");
+            return;
+        }
+        alert("Redirigiendo a la pasarela segura de Izipay... (Paso de validación)");
+        // Aquí es donde Izipay insertará su formulario una vez te den el código técnico.
+    }
+</script>
 
 </body>
 </html>
+
 
